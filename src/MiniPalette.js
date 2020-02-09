@@ -18,7 +18,7 @@ const styles = {
     height: "150px",
     width: "100%",
     borderRadius: "5px",
-    overflow: 'hidden',
+    overflow: "hidden"
   },
   title: {
     display: "flex",
@@ -36,10 +36,10 @@ const styles = {
   },
   miniColor: {
     height: "25%",
-    width:"20%",
+    width: "20%",
     display: "inline-block",
     margin: "0 auto",
-    marginBottom: "-3.5px",
+    marginBottom: "-3.5px"
   }
 };
 
@@ -52,8 +52,9 @@ const MiniPalette = props => {
       key={color.name}
     ></div>
   ));
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onClick={props.handleClick}>
       <div className={classes.colors}>{miniColorBoxes}</div>
       <h5 className={classes.title}>
         {paletteName}

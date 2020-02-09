@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 import MiniPalette from "./MiniPalette";
 
@@ -25,15 +24,17 @@ const styles = {
     color: "#fff"
   },
   palettes: {
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
-    gap: "5%",
-
+    gap: "5%"
   }
 };
 class PaletteList extends Component {
+  goToPalette = id => {
+    this.props.history.push(`/palette/${id}`);
+  };
   render() {
     const { palettes, classes } = this.props;
     return (
@@ -46,9 +47,10 @@ class PaletteList extends Component {
             {palettes.map(palette => {
               return (
                 <p>
-                  <Link to={`/palette/${palette.id}`}>
-                    <MiniPalette {...palette} />
-                  </Link>
+                  <MiniPalette
+                    {...palette}
+                    handleClick={() => this.goToPalette(palette.id)}
+                  />
                 </p>
               );
             })}
